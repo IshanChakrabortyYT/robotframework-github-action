@@ -1,0 +1,14 @@
+sudo mkdir $REPORTS_DIR && sudo chmod 777 $REPORTS_DIR
+ 
+docker run \
+ --shm-size=$ALLOWED_SHARED_MEMORY \
+ -e BROWSER=$BROWSER \
+ -e ROBOT_THREADS=$ROBOT_THREADS \
+ -e PABOT_OPTIONS=$PABOT_OPTIONS \
+ -e ROBOT_OPTIONS="$ROBOT_OPTIONS" \
+ -e SCREEN_COLOR_DEPTH=$SCREEN_COLOR_DEPTH \
+ -e SCREEN_HEIGHT=$SCREEN_HEIGHT \
+ -e SCREEN_WIDTH=$SCREEN_WIDTH \
+ -v $REPORTS_DIR:/opt/robotframework/reports:Z \
+ -v $TESTS_DIR:/opt/robotframework/tests:Z \
+ $IMAGE:$IMAGE_VERSION
